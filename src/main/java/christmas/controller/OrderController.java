@@ -18,16 +18,18 @@ public class OrderController {
         Orders orders = getOrders();
 
         List<String> orderMenu = OrderService.makeOrderMenu(orders.getOrderList());
-        String preDiscountTotal = orders.getPreDiscountTotal();
+        String preDiscountTotal = MoneyFormating.convertMoneyFormat(orders.getPreDiscountTotal());
 
         printDynamicMessage(format(EVENT_PREVIEW_MESSAGE.getMessage(), visitDay.getVisitDay()));
         printNewLine();
 
         printStaticMessage(ORDER_MENU_TITLE);
         printStringList(orderMenu);
+        printNewLine();
 
         printStaticMessage(PRE_DISCOUNT_TOTAL_TITLE);
         printDynamicMessage(format(ORDER_PRICE_MESSAGE.getMessage(), preDiscountTotal));
+        printNewLine();
 
         return orders;
     }

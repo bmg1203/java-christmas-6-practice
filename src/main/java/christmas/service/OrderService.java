@@ -15,7 +15,7 @@ import static java.lang.String.format;
 public class OrderService {
     public static Orders getOrders(String input) {
         List<Order> orderList = makeOrderList(input);
-        String preDiscountTotal = MoneyFormating.convertMoneyFormat(calculatePreDisCountTotal(orderList));
+        int preDiscountTotal = calculatePreDisCountTotal(orderList);
 
         return Orders.createOrders(orderList, preDiscountTotal);
     }

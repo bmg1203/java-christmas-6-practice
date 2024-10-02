@@ -4,18 +4,18 @@ import java.util.List;
 
 public class Orders {
     private List<Order> orderList;
-    private String preDiscountTotal;
+    private int preDiscountTotal;
 
-    private Orders(List<Order> orderList, String preDiscountTotal) {
+    private Orders(List<Order> orderList, int preDiscountTotal) {
         this.orderList = orderList;
         this.preDiscountTotal = preDiscountTotal;
     }
 
-    public static Orders createOrders(List<Order> orderList, String preDiscountTotal) {
+    public static Orders createOrders(List<Order> orderList, int preDiscountTotal) {
         return new Orders(orderList, preDiscountTotal);
     }
 
-    public String getPreDiscountTotal() {
+    public int getPreDiscountTotal() {
         return preDiscountTotal;
     }
 

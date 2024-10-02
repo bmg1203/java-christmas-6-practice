@@ -16,6 +16,8 @@ public class OutputView {
     }
 
     public static void printStringList(List<String> list) {
-        System.out.println(list);
+        for (String s : list) {
+            System.out.println(s);
+        }
     }
 }
