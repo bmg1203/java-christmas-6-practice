@@ -1,7 +1,7 @@
 package christmas.controller;
 
 import christmas.domain.Discount;
-import christmas.global.constants.Badge;
+import christmas.global.constants.badge.Badge;
 import christmas.service.BadgeService;
 
 import static christmas.view.output.OutputMessage.BADGE_TITLE;

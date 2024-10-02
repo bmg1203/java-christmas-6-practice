@@ -1,6 +1,6 @@
 package christmas.domain;
 
-import christmas.global.constants.Menu;
+import christmas.global.constants.menu.Menu;
 
 public class Order {
     private final Menu menu;

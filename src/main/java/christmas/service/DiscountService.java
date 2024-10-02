@@ -1,18 +1,17 @@
 package christmas.service;
 
 import christmas.domain.*;
-import christmas.global.constants.EventType;
-import christmas.global.constants.Menu;
+import christmas.global.constants.menu.Menu;
 import christmas.global.util.MoneyFormating;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static christmas.global.constants.Config.*;
-import static christmas.global.constants.EventDays.*;
-import static christmas.global.constants.EventType.*;
-import static christmas.global.constants.MenuType.DESSERT;
-import static christmas.global.constants.MenuType.MAIN;
+import static christmas.global.constants.config.Config.*;
+import static christmas.global.constants.event.EventDays.*;
+import static christmas.global.constants.event.EventType.*;
+import static christmas.global.constants.menu.MenuType.DESSERT;
+import static christmas.global.constants.menu.MenuType.MAIN;
 import static christmas.view.output.OutputMessage.EVENT_LIST_MESSAGE;
 import static java.lang.String.format;
 

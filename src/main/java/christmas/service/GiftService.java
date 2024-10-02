@@ -2,9 +2,9 @@ package christmas.service;
 
 import christmas.domain.Gift;
 import christmas.domain.Orders;
-import christmas.global.constants.Menu;
+import christmas.global.constants.menu.Menu;
 
-import static christmas.global.constants.Config.*;
+import static christmas.global.constants.config.Config.*;
 
 public class GiftService {
     public static Gift makeGift(Orders orders) {

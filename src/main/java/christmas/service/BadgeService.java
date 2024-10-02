@@ -1,9 +1,9 @@
 package christmas.service;
 
 import christmas.domain.Discount;
-import christmas.global.constants.Badge;
+import christmas.global.constants.badge.Badge;
 
-import static christmas.global.constants.Badge.*;
+import static christmas.global.constants.badge.Badge.*;
 
 public class BadgeService {
     public static Badge getBadge(Discount discount) {

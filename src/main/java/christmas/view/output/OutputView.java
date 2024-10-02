@@ -1,6 +1,6 @@
 package christmas.view.output;
 
-import christmas.global.constants.Badge;
+import christmas.global.constants.badge.Badge;
 
 import java.util.List;
 

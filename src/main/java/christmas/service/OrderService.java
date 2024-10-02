@@ -2,13 +2,12 @@ package christmas.service;
 
 import christmas.domain.Order;
 import christmas.domain.Orders;
-import christmas.global.constants.Menu;
-import christmas.global.util.MoneyFormating;
+import christmas.global.constants.menu.Menu;
 
 import java.util.Arrays;
 import java.util.List;
 
-import static christmas.global.constants.Config.*;
+import static christmas.global.constants.config.Config.*;
 import static christmas.view.output.OutputMessage.QUANTITY_MESSAGE;
 import static java.lang.String.format;
 

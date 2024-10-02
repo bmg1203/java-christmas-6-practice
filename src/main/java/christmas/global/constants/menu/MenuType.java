@@ -1,4 +1,4 @@
-package christmas.global.constants;
+package christmas.global.constants.menu;
 
 public enum MenuType {
     APPETIZER("Appetizer"),

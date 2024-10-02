@@ -1,6 +1,6 @@
-package christmas.global.constants;
+package christmas.global.constants.menu;
 
-import static christmas.global.constants.MenuType.*;
+import static christmas.global.constants.menu.MenuType.*;
 
 public enum Menu {
     // Appetizer

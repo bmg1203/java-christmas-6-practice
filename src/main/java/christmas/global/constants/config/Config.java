@@ -1,6 +1,8 @@
-package christmas.global.constants;
+package christmas.global.constants.config;
 
-import static christmas.global.constants.Menu.Champagne;
+import christmas.global.constants.menu.Menu;
+
+import static christmas.global.constants.menu.Menu.Champagne;
 
 public class Config {
     // System Configuration
