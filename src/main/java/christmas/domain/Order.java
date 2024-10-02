@@ -15,6 +15,10 @@ public class Order {
         return new Order(menu, quantity);
     }
 
+    public int getQuantity() {
+        return quantity;
+    }
+
     public Menu getMenu() {
         return menu;
     }
