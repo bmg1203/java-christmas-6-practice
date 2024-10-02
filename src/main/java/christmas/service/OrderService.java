@@ -13,41 +13,7 @@ public class OrderService {
     public static Orders makeOrders(String input) {
         List<Order> orderList = makeOrderList(input);
 
-        int appetizerCount = getAppetizerCount(orderList);
-        int mainCount = getMainCount(orderList);
-        int dessertCount = getDessertCount(orderList);
-        int drinksCount = getDrinksCount(orderList);
-
-        return Orders.createOrders(orderList, appetizerCount, mainCount, dessertCount, drinksCount);
-    }
-
-    private static int getAppetizerCount(List<Order> orderList) {
-        return (int) orderList.stream()
-                .map(Order::getMenu)
-                .filter(menu -> "Appetizer".equals(menu.getType()))
-                .count();
-
-    }
-
-    private static int getMainCount(List<Order> orderList) {
-        return (int) orderList.stream()
-                .map(Order::getMenu)
-                .filter(menu -> "Main".equals(menu.getType()))
-                .count();
-    }
-
-    private static int getDessertCount(List<Order> orderList) {
-        return (int) orderList.stream()
-                .map(Order::getMenu)
-                .filter(menu -> "Dessert".equals(menu.getType()))
-                .count();
-    }
-
-    private static int getDrinksCount(List<Order> orderList) {
-        return (int) orderList.stream()
-                .map(Order::getMenu)
-                .filter(menu -> "Drinks".equals(menu.getType()))
-                .count();
+        return Orders.createOrders(orderList);
     }
 
     private static List<Order> makeOrderList(String input) {
