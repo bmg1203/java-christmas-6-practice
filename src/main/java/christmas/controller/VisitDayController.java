@@ -6,11 +6,11 @@ import christmas.view.input.InputView;
 import static christmas.view.output.OutputMessage.ASK_VISIT_DAY_MESSAGE;
 import static christmas.view.output.OutputView.printStaticMessage;
 
-public class DayController {
+public class VisitDayController {
     public static VisitDay getVisitDay() {
         printStaticMessage(ASK_VISIT_DAY_MESSAGE);
 
-        return VisitDay.createDay(Integer.parseInt(InputView.input()));
+        return VisitDay.createVisitDay(Integer.parseInt(InputView.input()));
     }
 
 }

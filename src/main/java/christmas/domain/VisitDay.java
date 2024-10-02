@@ -7,7 +7,11 @@ public class VisitDay {
         this.visitDay = visitDay;
     }
 
-    public static VisitDay createDay(int visitDay) {
+    public static VisitDay createVisitDay(int visitDay) {
         return new VisitDay(visitDay);
+    }
+
+    public int getVisitDay() {
+        return visitDay;
     }
 }
