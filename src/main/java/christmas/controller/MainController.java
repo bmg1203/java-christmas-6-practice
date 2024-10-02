@@ -1,6 +1,6 @@
 package christmas.controller;
 
-import christmas.domain.Day;
+import christmas.domain.VisitDay;
 import christmas.domain.Orders;
 
 import static christmas.view.output.OutputMessage.INFORMATION_MESSAGE;
@@ -10,7 +10,7 @@ public class MainController {
     public static void start() {
         printStaticMessage(INFORMATION_MESSAGE);
 
-        Day day = DayController.getVisitDay();
+        VisitDay day = DayController.getVisitDay();
         Orders orders = OrderController.getOrders();
     }
 }
