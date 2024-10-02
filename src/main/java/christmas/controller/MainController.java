@@ -14,5 +14,6 @@ public class MainController {
         VisitDay visitDay = VisitDayController.getVisitDay();
         Orders orders = OrderController.makeOrders(visitDay);
         Gift gift = GiftController.getGift(orders);
+        DiscountController.printDiscount(visitDay, orders, gift);
     }
 }

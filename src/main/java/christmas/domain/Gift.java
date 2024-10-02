@@ -1,23 +1,25 @@
 package christmas.domain;
 
+import christmas.global.constants.Menu;
+
 public class Gift {
-    private String name;
+    private Menu menu;
     private int quantity;
 
-    private Gift(String name, int quantity) {
-        this.name = name;
+    private Gift(Menu menu, int quantity) {
+        this.menu = menu;
         this.quantity = quantity;
     }
 
-    public String getName() {
-        return name;
+    public Menu getMenu() {
+        return menu;
     }
 
     public int getQuantity() {
         return quantity;
     }
 
-    public static Gift createGift(String name, int quantity) {
-        return new Gift(name, quantity);
+    public static Gift createGift(Menu menu, int quantity) {
+        return new Gift(menu, quantity);
     }
 }
