@@ -1,5 +1,6 @@
 package christmas.controller;
 
+import christmas.domain.Discount;
 import christmas.domain.Gift;
 import christmas.domain.VisitDay;
 import christmas.domain.Orders;
@@ -14,6 +15,7 @@ public class MainController {
         VisitDay visitDay = VisitDayController.getVisitDay();
         Orders orders = OrderController.makeOrders(visitDay);
         Gift gift = GiftController.getGift(orders);
-        DiscountController.printDiscount(visitDay, orders, gift);
+        Discount discount = DiscountController.printDiscount(visitDay, orders, gift);
+        BadgeController.printBadgeName(discount);
     }
 }

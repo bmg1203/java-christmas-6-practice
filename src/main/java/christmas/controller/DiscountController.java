@@ -14,7 +14,7 @@ import static christmas.view.output.OutputView.*;
 import static java.lang.String.format;
 
 public class DiscountController {
-    public static void printDiscount(VisitDay visitDay, Orders orders, Gift gift) {
+    public static Discount printDiscount(VisitDay visitDay, Orders orders, Gift gift) {
         Discount discount = DiscountService.getDiscount(visitDay, orders, gift);
         List<String> eventMenu = DiscountService.makeEventList(discount, visitDay, gift);
         int totalDiscount = discount.getTotalDiscount();
@@ -23,6 +23,8 @@ public class DiscountController {
         printEventList(eventMenu);
         printTotalDiscount(totalDiscount);
         printFinalPayment(finalPayment);
+
+        return discount;
     }
 
     private static void printEventList(List<String> eventMenu) {
@@ -47,7 +49,7 @@ public class DiscountController {
 
     private static void printFinalPayment(int finalPayment) {
         printStaticMessage(FINAL_PAYMENT_TITLE);
-        printDynamicMessage(format(ORDER_PRICE_MESSAGE.getMessage(), finalPayment));
+        printDynamicMessage(format(ORDER_PRICE_MESSAGE.getMessage(), MoneyFormating.convertMoneyFormat(finalPayment)));
         printNewLine();
     }
 }

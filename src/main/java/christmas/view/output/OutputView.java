@@ -1,5 +1,7 @@
 package christmas.view.output;
 
+import christmas.global.constants.Badge;
+
 import java.util.List;
 
 public class OutputView {
@@ -19,5 +21,9 @@ public class OutputView {
         for (String s : list) {
             System.out.println(s);
         }
+    }
+
+    public static void printBadge(Badge badge) {
+        System.out.println(badge.getName());
     }
 }
