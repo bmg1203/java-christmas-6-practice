@@ -31,4 +31,15 @@ public enum Menu {
         this.price = price;
     }
 
+    public String getType() {
+        return type;
+    }
+
+    public static Menu getMenuByName(String name) {
+        for (Menu menu : Menu.values()) {
+            if (menu.name.equals(name)) return menu;
+        }
+        return null;
+    }
+
 }
