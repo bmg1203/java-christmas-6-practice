@@ -12,7 +12,7 @@ public class MainController {
     public static void start() {
         printStaticMessage(INFORMATION_MESSAGE);
 
-        VisitDay visitDay = VisitDayController.getVisitDay();
+        VisitDay visitDay = VisitDayController.requestVisitDay();
         Orders orders = OrderController.makeOrders(visitDay);
         Gift gift = GiftController.getGift(orders);
         Discount discount = DiscountController.printDiscount(visitDay, orders, gift);

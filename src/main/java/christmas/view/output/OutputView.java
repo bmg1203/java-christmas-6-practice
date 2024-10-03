@@ -26,4 +26,9 @@ public class OutputView {
     public static void printBadge(Badge badge) {
         System.out.println(badge.getName());
     }
+
+    public static void printErrorMessage(String message) {
+        System.out.println(message);
+        printNewLine();
+    }
 }
