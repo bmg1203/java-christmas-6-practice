@@ -17,6 +17,8 @@ import static java.lang.String.format;
 
 public class DiscountService {
     public static Discount getDiscount(VisitDay visitDay, Orders orders, Gift gift) {
+        if (!isBenefitAvailable(orders)) return Discount.createDiscount(0,0,0,0,0,0);
+
         int day = visitDay.getVisitDay();
         List<Order> orderList = orders.getOrderList();
 
@@ -34,13 +36,17 @@ public class DiscountService {
         int day = visitDay.getVisitDay();
         List<String> eventList = new ArrayList<>();
 
-        if (isChristmas(day)) eventList.add(format(EVENT_LIST_MESSAGE.getMessage(), CHRISTMAS.getType(), MoneyFormating.convertMoneyFormat(discount.getChristmasDiscount())));
+        if (isChristmas(day) && discount.getChristmasDiscount() > 0) eventList.add(format(EVENT_LIST_MESSAGE.getMessage(), CHRISTMAS.getType(), MoneyFormating.convertMoneyFormat(discount.getChristmasDiscount())));
         if (isWeekday(day) && discount.getWeekdayDiscount() > 0) eventList.add(format(EVENT_LIST_MESSAGE.getMessage(), WEEKDAY.getType(), MoneyFormating.convertMoneyFormat(discount.getWeekdayDiscount())));
         if (isWeekend(day) && discount.getWeekendDiscount() > 0) eventList.add(format(EVENT_LIST_MESSAGE.getMessage(), WEEKDAY.getType(), MoneyFormating.convertMoneyFormat(discount.getWeekendDiscount())));
         if (isSpecialEvent(day)) eventList.add(format(EVENT_LIST_MESSAGE.getMessage(), SPECIAL.getType(), MoneyFormating.convertMoneyFormat(discount.getSpecialDiscount())));
         if (isGiftEvent(gift)) eventList.add(format(EVENT_LIST_MESSAGE.getMessage(), GIFT.getType(), MoneyFormating.convertMoneyFormat(discount.getGiftDiscount())));
 
         return eventList;
+    }
+
+    private static boolean isBenefitAvailable(Orders orders) {
+        return orders.getPreDiscountTotal() >= 10000;
     }
 
     private static int getMainCount(List<Order> orderList) {
