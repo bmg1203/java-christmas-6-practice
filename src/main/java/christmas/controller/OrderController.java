@@ -3,6 +3,7 @@ package christmas.controller;
 import christmas.domain.Order;
 import christmas.domain.Orders;
 import christmas.domain.VisitDay;
+import christmas.global.handler.ExceptionHandler;
 import christmas.global.util.MoneyFormating;
 import christmas.service.OrderService;
 import christmas.view.input.InputView;
@@ -14,10 +15,10 @@ import static christmas.view.output.OutputView.*;
 import static java.lang.String.format;
 
 public class OrderController {
-    public static Orders makeOrders(VisitDay visitDay) {
-        Orders orders = getOrders();
+    public static Orders printOrders(VisitDay visitDay) {
+        Orders orders = makeOrders();
 
-        List<String> orderMenu = OrderService.makeOrderMenu(orders.getOrderList());
+        List<String> orderMenu = OrderService.makeOrderFormat(orders.getOrderList());
         String preDiscountTotal = MoneyFormating.convertMoneyFormat(orders.getPreDiscountTotal());
 
         printDynamicMessage(format(EVENT_PREVIEW_MESSAGE.getMessage(), visitDay.getVisitDay()));
@@ -34,7 +35,11 @@ public class OrderController {
         return orders;
     }
 
-    private static Orders getOrders() {
+    private static Orders makeOrders() {
+        return ExceptionHandler.execute(OrderController::requestOrders);
+    }
+
+    private static Orders requestOrders() {
         printStaticMessage(ASK_MENU_AND_COUNT_MESSAGE);
 
         String input = InputView.input();
