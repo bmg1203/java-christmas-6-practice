@@ -1,12 +1,12 @@
 package christmas.domain;
 
 public class Discount {
-    private int christmasDiscount;
-    private int weekdayDiscount;
-    private int weekendDiscount;
-    private int specialDiscount;
-    private int giftDiscount;
-    private int totalDiscount;
+    private final int christmasDiscount;
+    private final int weekdayDiscount;
+    private final int weekendDiscount;
+    private final int specialDiscount;
+    private final int giftDiscount;
+    private final int totalDiscount;
 
     private Discount(int christmasDiscount, int weekdayDiscount, int weekendDiscount, int specialDiscount, int giftDiscount, int totalDiscount) {
         this.christmasDiscount = christmasDiscount;

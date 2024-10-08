@@ -3,8 +3,8 @@ package christmas.domain;
 import java.util.List;
 
 public class Orders {
-    private List<Order> orderList;
-    private int preDiscountTotal;
+    private final List<Order> orderList;
+    private final int preDiscountTotal;
 
     private Orders(List<Order> orderList, int preDiscountTotal) {
         this.orderList = orderList;

@@ -17,4 +17,8 @@ public class ExceptionHandler {
         }
     }
 
+    @FunctionalInterface
+    public interface InputSupplier {
+        String getInput() throws InputException;
+    }
 }

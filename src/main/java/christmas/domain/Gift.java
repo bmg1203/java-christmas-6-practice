@@ -3,8 +3,8 @@ package christmas.domain;
 import christmas.global.constants.menu.Menu;
 
 public class Gift {
-    private Menu menu;
-    private int quantity;
+    private final Menu menu;
+    private final int quantity;
 
     private Gift(Menu menu, int quantity) {
         this.menu = menu;
