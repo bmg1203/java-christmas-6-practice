@@ -61,6 +61,6 @@ public class InputView {
             int count = Parser.stringToInt(splitInput.get(1));
             orders.add(new Order(name, count, menus));
         }
-        return new Orders(orders);
+        return new Orders(orders, menus);
     }
 }
