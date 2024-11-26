@@ -6,7 +6,8 @@ public enum OutputPrompts {
     ORDER_MENU_HEADER_OUTPUT("<주문 메뉴>"),
     ORDER_MENU_OUTPUT("%s %d개"),
     TOTAL_PRICE_OUTPUT("<할인 전 총주문 금액>\n%s원\n"),
-    GIFT_MENU_OUTPUT("<증정 메뉴>\n%s 1개\n"),
+    GIFT_MENU_HEADER("<증정 메뉴>"),
+    GIFT_MENU_OUTPUT("%s 1개\n"),
     BENEFITS_OUTPUT("<혜택 내역>"),
     CHRISTMAS_SALE_PRICE_OUTPUT("크리스마스 디데이 할인: -%s원"),
     WEEKDAY_SALE_PRICE_OUTPUT("평일 할인: -%s원"),
@@ -15,7 +16,7 @@ public enum OutputPrompts {
     GIFT_EVENT_PRICE_OUTPUT("증정 이벤트: -%s원"),
     TOTAL_BENEFITS_PRICE_OUTPUT("<총혜택 금액>\n-%s원\n"),
     FINAL_PAYMENT_PRICE_OUTPUT("<할인 후 예상 결제 금액>\n%s원\n"),
-    BADGE_OUTPUT("<12월 이벤트 배지>\n%s원");
+    BADGE_OUTPUT("<12월 이벤트 배지>\n%s");
 
     private final String prompt;
 
