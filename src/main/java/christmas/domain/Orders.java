@@ -21,6 +21,10 @@ public class Orders {
         this.orders = orders;
     }
 
+    public List<Order> getOrders() {
+        return List.copyOf(orders);
+    }
+
     private void validateDuplicate(List<Order> orders) {
         List<Order> duplicate = new ArrayList<>();
         for (Order order : orders) {
