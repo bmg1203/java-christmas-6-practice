@@ -1,5 +1,6 @@
 package christmas.domain;
 
+import christmas.constants.EventMinPrice;
 import christmas.constants.SavedSpecialSaleDay;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
@@ -22,11 +23,11 @@ public class Event {
     private final List<Integer> specialSaleDay;
 
     public Event(Visit visit, TotalPrice totalPrice) {
-        this.christmasDaySale = checkChristmasDaySale(visit);
-        this.weekendSale = checkWeekendSale(visit);
-        this.weekDaySale = checkWeekDaySale();
-        this.specialSaleDay = getSpecialSaleDay();
-        this.specialSale = checkSpecialSale(visit);
+        this.christmasDaySale = checkChristmasDaySale(visit, totalPrice);
+        this.weekendSale = checkWeekendSale(visit, totalPrice);
+        this.weekDaySale = checkWeekDaySale(totalPrice);
+        this.specialSaleDay = getSpecialSaleDay(totalPrice);
+        this.specialSale = checkSpecialSale(visit, totalPrice);
         this.giftEvent = checkGiftEvent(totalPrice);
     }
 
@@ -50,32 +51,32 @@ public class Event {
         return giftEvent;
     }
 
-    private boolean checkChristmasDaySale(Visit visit) {
-        if (visit.getDay() <= CHRISTMAS_DAY_SALE_MAX_DAY) {
+    private boolean checkChristmasDaySale(Visit visit, TotalPrice totalPrice) {
+        if (visit.getDay() <= CHRISTMAS_DAY_SALE_MAX_DAY && totalPrice.getTotalPrice() >= EventMinPrice.EVENT_MIN_PRICE.getPrice()) {
             return true;
         }
         return false;
     }
 
-    private boolean checkWeekendSale(Visit visit) {
+    private boolean checkWeekendSale(Visit visit, TotalPrice totalPrice) {
         LocalDate date = LocalDate.of(YEAR, MONTH, visit.getDay());
         DayOfWeek dayOfWeek = date.getDayOfWeek();
         int dayOfWeekNumber = dayOfWeek.getValue();
 
-        if (dayOfWeekNumber == FRIDAY || dayOfWeekNumber == SATURDAY) {
+        if ((dayOfWeekNumber == FRIDAY || dayOfWeekNumber == SATURDAY) && totalPrice.getTotalPrice() >= EventMinPrice.EVENT_MIN_PRICE.getPrice()) {
             return true;
         }
         return false;
     }
 
-    private boolean checkWeekDaySale() {
-        if (weekDaySale) {
+    private boolean checkWeekDaySale(TotalPrice totalPrice) {
+        if (weekDaySale || totalPrice.getTotalPrice() >= EventMinPrice.EVENT_MIN_PRICE.getPrice()) {
             return false;
         }
         return true;
     }
 
-    private List<Integer> getSpecialSaleDay() {
+    private List<Integer> getSpecialSaleDay(TotalPrice totalPrice) {
         List<Integer> saveDays = new ArrayList<>();
         for (SavedSpecialSaleDay savedSpecialSaleDay : SavedSpecialSaleDay.values()) {
             saveDays.add(savedSpecialSaleDay.getDay());
@@ -83,15 +84,15 @@ public class Event {
         return saveDays;
     }
 
-    private boolean checkSpecialSale(Visit visit) {
-        if (specialSaleDay.contains(visit.getDay())) {
+    private boolean checkSpecialSale(Visit visit, TotalPrice totalPrice) {
+        if (specialSaleDay.contains(visit.getDay()) && totalPrice.getTotalPrice() >= EventMinPrice.EVENT_MIN_PRICE.getPrice()) {
             return true;
         }
         return false;
     }
 
     private boolean checkGiftEvent(TotalPrice totalPrice) {
-        if (totalPrice.getTotalPrice() >= GIFT_PRICE) {
+        if (totalPrice.getTotalPrice() >= GIFT_PRICE && totalPrice.getTotalPrice() >= EventMinPrice.EVENT_MIN_PRICE.getPrice()) {
             return true;
         }
         return false;
