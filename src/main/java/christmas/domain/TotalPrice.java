@@ -20,4 +20,8 @@ public class TotalPrice {
         }
         return sum;
     }
+
+    public int finalPrice(SalePrice salePrice) {
+        return totalPrice - salePrice.calculateTotalSalePrice();
+    }
 }
