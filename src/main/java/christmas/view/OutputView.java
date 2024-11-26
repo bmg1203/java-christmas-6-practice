@@ -33,6 +33,7 @@ public class OutputView {
     }
 
     public void giftEventOutput(Event event) {
+        System.out.print(OutputPrompts.GIFT_MENU_HEADER.getPrompt());
         if (event.isGiftEvent()) {
             System.out.printf(OutputPrompts.GIFT_MENU_OUTPUT.getPrompt(), GiftEvent.GIFT_MENU_NAME.getName());
             System.out.println();
@@ -44,24 +45,32 @@ public class OutputView {
 
     public void allBenefitOutput(Event event, SalePrice salePrice) {
         System.out.print(OutputPrompts.BENEFITS_OUTPUT.getPrompt());
-        if (!event.isChristmasDaySale() && !event.isWeekDaySale() && !event.isWeekendSale()
-            && !event.isSpecialSale() && !event.isGiftEvent()) {
+        if (isNoEvent(event, salePrice)) {
             System.out.println(NO_BENEFIT);
             System.out.println();
         }
         eventOutput(event, salePrice);
     }
 
+    private static boolean isNoEvent(Event event, SalePrice salePrice) {
+        boolean isEvent = !event.isChristmasDaySale() && !event.isWeekDaySale() && !event.isWeekendSale()
+                && !event.isSpecialSale() && !event.isGiftEvent();
+        boolean isPrice = salePrice.getChristmasSalePrice() == 0 && salePrice.getWeekDaySalePrice() == 0
+                && salePrice.getWeekendSalePrice() == 0 && salePrice.getSpecialSalePrice() == 0
+                && salePrice.getGiftEventPrice() == 0;
+        return isEvent || isPrice;
+    }
+
     private void eventOutput(Event event, SalePrice salePrice) {
-        if (event.isChristmasDaySale())
+        if (event.isChristmasDaySale() && salePrice.getChristmasSalePrice() != 0)
             System.out.printf(OutputPrompts.CHRISTMAS_SALE_PRICE_OUTPUT.getPrompt(), Parser.intToMoneyFormat(salePrice.getChristmasSalePrice()));
-        if (event.isWeekDaySale())
+        if (event.isWeekDaySale() && salePrice.getWeekDaySalePrice() != 0)
             System.out.printf(OutputPrompts.WEEKDAY_SALE_PRICE_OUTPUT.getPrompt(), Parser.intToMoneyFormat(salePrice.getWeekDaySalePrice()));
-        if (event.isWeekendSale())
+        if (event.isWeekendSale() && salePrice.getWeekendSalePrice() != 0)
             System.out.printf(OutputPrompts.WEEKEND_SALE_PRICE_OUTPUT.getPrompt(), Parser.intToMoneyFormat(salePrice.getWeekendSalePrice()));
-        if (event.isSpecialSale())
+        if (event.isSpecialSale() && salePrice.getSpecialSalePrice() != 0)
             System.out.printf(OutputPrompts.SPECIAL_SALE_PRICE_OUTPUT.getPrompt(), Parser.intToMoneyFormat(salePrice.getSpecialSalePrice()));
-        if (event.isGiftEvent())
+        if (event.isGiftEvent() && salePrice.getGiftEventPrice() != 0)
             System.out.printf(OutputPrompts.GIFT_EVENT_PRICE_OUTPUT.getPrompt(), Parser.intToMoneyFormat(salePrice.getGiftEventPrice()));
     }
 
