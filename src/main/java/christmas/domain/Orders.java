@@ -2,6 +2,7 @@ package christmas.domain;
 
 import christmas.constants.CautionMessage;
 import christmas.constants.ErrorMessage;
+import christmas.constants.EventMinPrice;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,14 +11,13 @@ public class Orders {
     private static final String DRINK_TYPE = "음료";
     private static final int TYPE_COUNT = 1;
     private static final int MAX_ORDER_COUNT = 20;
-    private static final int EVENT_MIN_PRICE = 10000;
     private final List<Order> orders;
 
     public Orders(List<Order> orders, Menus menus) {
         validateDuplicate(orders);
         validateMaxCount(orders);
         validateType(orders, menus);
-        validateEventMinPrice(orders, menus);
+        cautionEventMinPrice(orders, menus);
         this.orders = orders;
     }
 
@@ -57,14 +57,14 @@ public class Orders {
         }
     }
 
-    private void validateEventMinPrice(List<Order> orders, Menus menus) {
+    private void cautionEventMinPrice(List<Order> orders, Menus menus) {
         int sum = 0;
         for (Order order : orders) {
             Menu menu = menus.getMenus().get(order.getName());
             sum += menu.getPrice();
         }
-        if (sum < EVENT_MIN_PRICE) {
-            throw new IllegalArgumentException(CautionMessage.EVENT_MIN_PRICE_CAUTION.getCaution() + ErrorMessage.MENU_INPUT_ERROR.getMessage());
+        if (sum < EventMinPrice.EVENT_MIN_PRICE.getPrice()) {
+            System.out.println(CautionMessage.EVENT_MIN_PRICE_CAUTION.getCaution());
         }
     }
 }
