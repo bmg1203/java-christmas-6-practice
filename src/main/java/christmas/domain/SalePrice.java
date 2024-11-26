@@ -1,5 +1,7 @@
 package christmas.domain;
 
+import christmas.constants.GiftEvent;
+
 public class SalePrice {
 
     private static final int CHRISTMAS_SALE_PRICE_STANDARD = 1000;
@@ -8,7 +10,6 @@ public class SalePrice {
     private static final String WEEKEND_SALE_TYPE = "메인";
     private static final int SALE_PRICE = 2023;
     private static final int SPECIAL_SALE_PRICE = 1000;
-    private static final String GIFT_EVENT_MENU_NAME = "샴페인";
     private final int christmasSalePrice;
     private final int weekDaySalePrice;
     private final int weekendSalePrice;
@@ -97,7 +98,7 @@ public class SalePrice {
 
     private int calculateGiftEventPrice(Event event, Menus menus) {
         if (event.isGiftEvent()) {
-            Menu Champagne = menus.getMenus().get(GIFT_EVENT_MENU_NAME);
+            Menu Champagne = menus.getMenus().get(GiftEvent.GIFT_MENU_NAME.getName());
             return Champagne.getPrice();
         }
         return 0;
