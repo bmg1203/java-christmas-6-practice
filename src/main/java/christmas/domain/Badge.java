@@ -20,22 +20,12 @@ public class Badge {
     }
 
     private String assignBadge(SalePrice salePrice) {
-        int totalSalePrice = calculateTotalPrice(salePrice);
+        int totalSalePrice = salePrice.calculateTotalSalePrice();
 
         if (totalSalePrice >= SANTA_PRICE) return SANTA_BADGE;
         if (totalSalePrice >= TREE_PRICE) return TREE_BADGE;
         if (totalSalePrice >= STAR_PRICE) return STAR_BADGE;
 
         return NO_BADGE;
-    }
-
-    private int calculateTotalPrice(SalePrice salePrice) {
-        int sum = 0;
-        sum += salePrice.getChristmasSalePrice();
-        sum += salePrice.getWeekDaySalePrice();
-        sum += salePrice.getWeekendSalePrice();
-        sum += salePrice.getSpecialSalePrice();
-        sum += salePrice.getGiftEventPrice();
-        return sum;
     }
 }

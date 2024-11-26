@@ -103,4 +103,14 @@ public class SalePrice {
         }
         return 0;
     }
+
+    public int calculateTotalSalePrice() {
+        int sum = 0;
+        sum += christmasSalePrice;
+        sum += weekDaySalePrice;
+        sum += weekendSalePrice;
+        sum += specialSalePrice;
+        sum += giftEventPrice;
+        return sum;
+    }
 }
